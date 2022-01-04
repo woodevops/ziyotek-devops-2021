@@ -1,0 +1,9 @@
+Terraform taint resource_name.resource_localname
+
+Terraform untaint resource_name.resource_localname
+
+terraform state rm resource_name.resource_localname
+
+terraform state import resource_name.resource_localname
+
+terraform state mv resource_name.resource_localname

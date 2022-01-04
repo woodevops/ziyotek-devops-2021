@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "devops-s3" {
-  bucket = "rady-ziyotek-devops-2021-start"
+resource "aws_s3_bucket" "devops-s3-1" {
+  bucket = "ziyotek-devops-training-bucket-rady"
   acl    = "public-read"
   server_side_encryption_configuration {
     rule {
@@ -16,7 +16,5 @@ resource "aws_s3_bucket" "devops-s3" {
     Name = "terraform bucket"
   }
 }
-
-
 
 
