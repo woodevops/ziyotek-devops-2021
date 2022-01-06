@@ -1,3 +1,7 @@
+variable "region" {
+  description = "specify your aws region needed in the provider.tf file"
+}
+
 variable "ami_id" {
     default = "ami-061ac2e015473fbe2"
 }
