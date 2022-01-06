@@ -8,8 +8,8 @@ terraform {
     bucket         = "rady-bucket-1-0-0"
     key            = "ec2-example/devops/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-lock"
-    encrypt        = true
+   #dynamodb_table = "terraform-lock"
+   #encrypt        = true
   }
 
   required_providers {

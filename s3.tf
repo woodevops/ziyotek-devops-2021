@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = "ziyotek-devops-training-bucket-rady"
-  acl    = "public-read"
+  bucket = var.bucket_name 
+  acl    = var.s3_acl  
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "devops-s3-1" {
     }
   }
   versioning {
-    enabled = false
+    enabled = var.versioning_enabled  
   }
 
   tags = {
