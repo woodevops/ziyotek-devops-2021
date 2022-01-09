@@ -1,47 +1,54 @@
-variable "region" {
-  description = "specify your aws region needed in the provider.tf file"
+variable "sg_name" {
+    description = "Allow ALL inbound traffic"
 }
 
-variable "ami_id" {
-    default = "ami-061ac2e015473fbe2"
+variable "sg_ingress_from_port" {
+    default = 0
 }
 
-variable "instance_type" {
-  default = "t2.micro"
+variable "sg_ingress_to_port" {
+    default = 0
 }
 
-variable "my_ssh_key" {
-  default = "rady_key_new"
+variable "sg_ingress_protocol" {
+    default = "-1"
+}
+variable "sg_ingress_cidr_blocks" {
+    default = ["0.0.0.0/0"]
 }
 
-variable "bucket_name" {
-  description = "Put here your unique s3 bucket name"
+variable "sg_egress_from_port" {
+    default = 0
 }
 
-variable "s3_acl" {
-  default = "public-read"
+variable "sg_egress_to_port" {
+    default = 0
 }
 
-variable "versioning_enabled" {
-  default = true
+variable "sg_egress_protocol" {
+    default = "-1"
 }
 
-variable "vpc_cidr" {
-  default = "10.10.0.0/16"
+variable "sg_egress_cidr_blocks" {
+    default = ["0.0.0.0/0"]
 }
 
-variable "subnet_1_cidr" {
-  default = "10.10.1.0/24"
+variable "sg_egress_ipv6_cidr_blocks" {
+    default = ["::/0"]
 }
 
-variable "subnet_2_cidr" {
-  default = "10.10.2.0/24"
+variable "dynamodb_hash_key" {
+    default = "LockID"
 }
 
-variable "zone_1" {
-  default = "us-east-1a"
+variable "dynamodb_read_capacity" {
+    default = 20
 }
 
-variable "zone_2" {
-  default = "us-east-1b"
+variable "dynamodb_write_capacity" {
+    default = 20
+}
+
+variable "dynamodb_attribute_type" {
+    default = 5
 }
