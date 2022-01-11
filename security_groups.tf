@@ -1,14 +1,14 @@
 resource "aws_security_group" "ziyotek_devops_all_all" {
   name        = var.sg_name
-  description = "Allow ALL inbound traffic"
+  description = var.sg_descroiption
   vpc_id      = aws_vpc.ziyotek_devops.id
 
   ingress {
-    description      = "TLS from VPC"
-    from_port        = var.sg_ingress_from_port
-    to_port          = var.sg_ingress_to_port
-    protocol         = var.sg_ingress_protocol
-    cidr_blocks      = var.sg_ingress_cidr_blocks
+    description = "TLS from VPC"
+    from_port   = var.sg_ingress_from_port
+    to_port     = var.sg_ingress_to_port
+    protocol    = var.sg_ingress_protocol
+    cidr_blocks = var.sg_ingress_cidr_blocks # ["0.0.0.0/16, 10.10.0.0/24"]
   }
 
   egress {

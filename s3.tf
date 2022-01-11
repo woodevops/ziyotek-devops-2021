@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = var.bucket_name 
-  acl    = var.s3_acl  
+  bucket = var.bucket_name
+  acl    = var.s3_acl
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
@@ -9,12 +9,10 @@ resource "aws_s3_bucket" "devops-s3-1" {
     }
   }
   versioning {
-    enabled = var.versioning_enabled  
+    enabled = var.versioning_enabled
   }
 
-  tags = {
-    Name = "terraform bucket"
-  }
+  tags = var.s3_tag
 }
 
 

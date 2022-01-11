@@ -1,7 +1,5 @@
 resource "aws_vpc" "ziyotek_devops" {
-  cidr_block = var.vpc_cidr  
-
-
+  cidr_block = var.vpc_cidr
   tags = {
     Name = "DevOps-VPC"
   }
@@ -9,8 +7,8 @@ resource "aws_vpc" "ziyotek_devops" {
 
 resource "aws_subnet" "devops_subnet_1" {
   vpc_id            = aws_vpc.ziyotek_devops.id
-  cidr_block        = var.subnet_1_cidr   
-  availability_zone = var.zone_1 
+  cidr_block        = var.subnet_1_cidr
+  availability_zone = var.zone_1
   tags = {
     Name = "DevOps-Subnet-1"
   }
@@ -19,7 +17,7 @@ resource "aws_subnet" "devops_subnet_1" {
 resource "aws_subnet" "devops_subnet_2" {
   vpc_id            = aws_vpc.ziyotek_devops.id
   cidr_block        = var.subnet_2_cidr
-  availability_zone = var.zone_2 
+  availability_zone = var.zone_2
   tags = {
     Name = "DevOps-Subnet-2"
   }
