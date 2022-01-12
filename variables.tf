@@ -129,3 +129,7 @@ variable "s3_tag" {
 #         "us-east-2" = "ami-1234"
 #     }
 # }
+
+variable "subnet_gr" {
+  default = aws_db_subnet_group.ziyotek_db_sg.id
+}
