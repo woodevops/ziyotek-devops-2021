@@ -133,3 +133,7 @@ variable "s3_tag" {
 variable "subnet_gr" {
   default = aws_db_subnet_group.ziyotek_db_sg.id
 }
+
+variable "db_password" {
+  
+}
