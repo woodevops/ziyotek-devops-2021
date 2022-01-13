@@ -13,6 +13,9 @@ resource "aws_s3_bucket" "devops-s3-1" {
   }
 
   tags = var.s3_tag
+
+  provisioner "local-exec" {
+    when = destroy
+    command = "aws s3 rm s3://${self.id} --recursive"
+  }
 }
-
-

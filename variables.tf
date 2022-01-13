@@ -109,10 +109,6 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "my_ssh_key" {
-  default = "rady_key_new"
-}
-
 variable "s3_tag" {
   type = map(any)
   default = {
@@ -130,10 +126,22 @@ variable "s3_tag" {
 #     }
 # }
 
-variable "subnet_gr" {
-  default = aws_db_subnet_group.ziyotek_db_sg.id
+variable "db_storage" {
+  default = "10"
 }
 
-variable "db_password" {
-  
+variable "db_version" {
+  default = "10.15"
+}
+
+variable "db_name" {
+  default = "ziyotek"
+}
+
+variable "db_username" {
+  default = "ziyotekuser"
+}
+
+variable "key_name" {
+  default = "devops-class-key"
 }
