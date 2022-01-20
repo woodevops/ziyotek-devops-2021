@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = var.bucket_name
+  bucket = "${var.bucket_name}-${data.aws_region.current.id}"
   acl    = var.s3_acl
   server_side_encryption_configuration {
     rule {
@@ -19,3 +19,5 @@ resource "aws_s3_bucket" "devops-s3-1" {
     command = "aws s3 rm s3://${self.id} --recursive"
   }
 }
+
+
