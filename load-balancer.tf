@@ -14,7 +14,7 @@ resource "aws_autoscaling_group" "devops_autoscaling_config" {
   max_size                  = 2
   min_size                  = 1
   desired_capacity          = 1
-  force_delete              = true
+  force_delete              = false
   launch_configuration      = aws_launch_configuration.devops_launch_config.name
   vpc_zone_identifier       = [aws_subnet.devops_subnet_1.id, aws_subnet.devops_subnet_2.id]
 
@@ -23,6 +23,11 @@ resource "aws_autoscaling_group" "devops_autoscaling_config" {
     value               = "dev"
     propagate_at_launch = true
   }
+}
+
+resource "aws_autoscaling_attachment" "asg_attachment_bar" {
+  autoscaling_group_name = aws_autoscaling_group.devops_autoscaling_config.id
+  alb_target_group_arn   = aws_lb_target_group.devops_tg_config.arn
 }
 
 resource "aws_lb" "devops_alb_config" {
@@ -53,7 +58,7 @@ resource "aws_lb_listener" "devops_listener_config" {
 
 resource "aws_lb_listener_rule" "devops_listener_rule_config" {
   listener_arn = aws_lb_listener.devops_listener_config.arn
-  priority     = 99
+  priority     = 100
 
   action {
     type             = "forward"
@@ -79,12 +84,6 @@ resource "aws_lb_target_group" "devops_tg_config" {
         interval = 30
         path = "/"
         port = "traffic-port"
-        matcher = "200-500" #success codes
+        matcher = "200-320" #success codes
     }
 }
-
-resource "aws_autoscaling_attachment" "asg_attachment_bar" {
-  autoscaling_group_name = aws_autoscaling_group.devops_autoscaling_config.id
-  alb_target_group_arn   = aws_lb_target_group.devops_tg_config.arn
-}
-
