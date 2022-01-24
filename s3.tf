@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = "${var.bucket_name}-${data.aws_region.current.id}"
+  bucket = "${var.bucket_name}-${data.aws_region.current.id}-123456788"
   acl    = var.s3_acl
   server_side_encryption_configuration {
     rule {

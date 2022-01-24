@@ -28,7 +28,10 @@ resource "aws_internet_gateway" "gw" {
 
 resource "aws_route_table" "training" {
   vpc_id = aws_vpc.ziyotek_devops.id
-
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
 }
 
 resource "aws_route_table_association" "a" {
@@ -38,10 +41,4 @@ resource "aws_route_table_association" "a" {
 resource "aws_route_table_association" "b" {
   subnet_id      = aws_subnet.devops_subnet_2.id
   route_table_id = aws_route_table.training.id
-}
-
-resource "aws_route" "r" {
-  route_table_id         = aws_route_table.training.id
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = aws_internet_gateway.gw.id
 }
