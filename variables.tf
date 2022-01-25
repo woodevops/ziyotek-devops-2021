@@ -106,16 +106,7 @@ variable "ami_id" {
 }
 
 variable "instance_type" {
-  default = "t2.micro"
-}
-
-variable "s3_tag" {
-  type = map(any)
-  default = {
-    Name        = "ziyotek"
-    Environment = "development"
-    #    Key               Value
-  }
+  default = "t3.large"
 }
 
 # variable "ami-map" {

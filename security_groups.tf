@@ -18,8 +18,4 @@ resource "aws_security_group" "ziyotek_devops_all_all" {
     cidr_blocks      = var.sg_egress_cidr_blocks
     ipv6_cidr_blocks = var.sg_egress_ipv6_cidr_blocks
   }
-
-  tags = {
-    Name = "DevOps-SG-1"
-  }
 }

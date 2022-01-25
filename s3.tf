@@ -1,5 +1,13 @@
+
+locals {
+  bucket_name = "${var.bucket_name}-${local.prefix}"
+  region = "${data.aws_region.current.id}"
+  s3_suffix = "0000000"
+  prefix = "beginig"
+}
+
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = "${var.bucket_name}-${data.aws_region.current.id}-123456788"
+  bucket = "${local.bucket_name}-${local.region}-${local.s3_suffix}"
   acl    = var.s3_acl
   server_side_encryption_configuration {
     rule {
@@ -11,8 +19,6 @@ resource "aws_s3_bucket" "devops-s3-1" {
   versioning {
     enabled = var.versioning_enabled
   }
-
-  tags = var.s3_tag
 
   provisioner "local-exec" {
     when = destroy
