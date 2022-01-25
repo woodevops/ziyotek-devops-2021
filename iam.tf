@@ -37,6 +37,7 @@ resource "aws_iam_policy" "s3_policy" {
         Action = [
           "s3:List*",
           "s3:PutObject",
+          "s3:CreateObject"
         ]
         Effect = "Allow"
         Resource = [
