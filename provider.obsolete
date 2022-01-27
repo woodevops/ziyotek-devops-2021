@@ -8,7 +8,6 @@ provider "aws" {
   }
 }
 
-
 terraform {
 
   #use the next block if you wish to define a backend s3 state file and dynamodb state lock:
