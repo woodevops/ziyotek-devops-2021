@@ -7,7 +7,7 @@ locals {
 }
 
 resource "aws_s3_bucket" "devops-s3-1" {
-  bucket = "${local.bucket_name}-${local.region}-${local.s3_suffix}"
+  bucket = "${local.bucket_name}-${local.region}-${local.s3_suffix}-${var.environment}"
   acl    = var.s3_acl
   server_side_encryption_configuration {
     rule {
@@ -18,11 +18,6 @@ resource "aws_s3_bucket" "devops-s3-1" {
   }
   versioning {
     enabled = var.versioning_enabled
-  }
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "aws s3 rm s3://${self.id} --recursive"
   }
 }
 
