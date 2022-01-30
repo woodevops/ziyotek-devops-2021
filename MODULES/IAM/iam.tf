@@ -4,7 +4,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 }
 
 resource "aws_iam_role" "s3_role" {
-  name = "s3_role"
+  name = "${var.environment}_s3_role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -25,7 +25,7 @@ EOF
 }
 
 resource "aws_iam_policy" "s3_policy" {
-  name        = "s3_policy"
+  name        = "${var.environment}_s3_policy"
   description = "My test s3 policy"
 
   # Terraform's "jsonencode" function converts a
@@ -41,8 +41,8 @@ resource "aws_iam_policy" "s3_policy" {
         ]
         Effect = "Allow"
         Resource = [
-          "${aws_s3_bucket.devops-s3-1.arn}",
-          "${aws_s3_bucket.devops-s3-1.arn}/*"
+          "${var.s3_arn}",
+          "${var.s3_arn}/*"
         ]
       },
     ]
