@@ -1,47 +1,29 @@
 variable "region" {
-  description = "specify your aws region needed in the provider.tf file"
+  type    = string
+  default = "us-east-1"
 }
 
-variable "ami_id" {
-    default = "ami-061ac2e015473fbe2"
+# variable "ami-map" {
+#     type = map
+#     default = {
+#         "us-east-1" = "ami-061ac2e015473fbe2"
+#         "us-east-2" = "ami-1234"
+#     }
+# }
+
+variable "db_storage" {
+  default = "10"
 }
 
-variable "instance_type" {
-  default = "t2.micro"
+variable "db_version" {
+  default = "10.15"
 }
 
-variable "my_ssh_key" {
-  default = "rady_key_new"
+variable "db_name" {
+  default = "ziyotek"
 }
 
-variable "bucket_name" {
-  description = "Put here your unique s3 bucket name"
+variable "db_username" {
+  default = "ziyotekuser"
 }
 
-variable "s3_acl" {
-  default = "public-read"
-}
-
-variable "versioning_enabled" {
-  default = true
-}
-
-variable "vpc_cidr" {
-  default = "10.10.0.0/16"
-}
-
-variable "subnet_1_cidr" {
-  default = "10.10.1.0/24"
-}
-
-variable "subnet_2_cidr" {
-  default = "10.10.2.0/24"
-}
-
-variable "zone_1" {
-  default = "us-east-1a"
-}
-
-variable "zone_2" {
-  default = "us-east-1b"
-}
