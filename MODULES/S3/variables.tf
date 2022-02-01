@@ -8,14 +8,14 @@ variable "versioning_enabled" {
   default = false
 }
 
-variable "bucket_name" {
-  default = "rady-paskalev-123456"
-}
-
 variable "s3_acl" {
   default = "private"
 }
 
 variable "environment" {
     default = ""
+}
+
+variable "create_s3" {
+  default = true
 }
