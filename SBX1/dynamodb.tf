@@ -1,3 +1,3 @@
 module "dynamodb" {
-    source = "../MODULES/DYNAMODB"
+  source = "../MODULES/DYNAMODB"
 }
